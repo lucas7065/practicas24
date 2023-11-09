@@ -1,0 +1,7 @@
+
+#grid-layout{
+    display: grid;
+    background-color: aquamarine;
+    width:auto;
+    padding: 20px;
+}
