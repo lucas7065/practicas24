@@ -8,6 +8,7 @@ import { vistaJuegoComponent } from './components/juego/vistaJuego.component';
 import { InfoMargenComponent } from './components/info-margen/info-margen.component';
 import { DescJuegoComponent } from './components/desc-juego/desc-juego.component';
 import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.component';
+import { MiniaturaComponent } from './components/miniatura/miniatura.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.com
     vistaJuegoComponent,
     InfoMargenComponent,
     DescJuegoComponent,
-    VistaFiltroComponent
+    VistaFiltroComponent,
+    MiniaturaComponent
   ],
   imports: [
     BrowserModule,

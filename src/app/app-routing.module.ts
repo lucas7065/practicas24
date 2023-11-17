@@ -4,8 +4,8 @@ import { vistaJuegoComponent } from './components/juego/vistaJuego.component';
 import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.component';
 
 const routes: Routes = [
-  {path: 'viewGame: id', component: vistaJuegoComponent},
-  { path: 'filter: genre', component: VistaFiltroComponent}
+  {path: 'viewGame/:id', component: vistaJuegoComponent},
+  {path: 'filter/:parametro/:case', component: VistaFiltroComponent},
 ];
 
 @NgModule({

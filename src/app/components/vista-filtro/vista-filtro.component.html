@@ -1,1 +1,6 @@
-<p>vista-filtro works!</p>
+<div *ngFor="let juego of juegos">
+    <app-miniatura imagen="{{juego.thumbnail}}"
+    titulo="{{juego.title}}"
+    descripcion="{{juego.short_description}}"
+    [id]="juego.id"></app-miniatura>
+</div>
