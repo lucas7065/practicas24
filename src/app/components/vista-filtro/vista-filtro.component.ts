@@ -11,33 +11,33 @@ export class VistaFiltroComponent {
 
   constructor(private api: ApiService, private route: ActivatedRoute){ }
 
-  @Input() parametro: string = " ";
-  @Input() case: number = 0;
+  @Input() plataforma: string = " ";
+  @Input() genero: string = " ";
+  @Input() sort: string = " ";
 
   juegos: any;
 
   async ngOnInit() {
     try {
-      this.parametro = this.route.snapshot.params['parametro'];
-      this.case = this.route.snapshot.params['case'];
-      if(this.case == 1)
+      this.plataforma = this.route.snapshot.params['plataforma'] ?? " ";
+      this.genero = this.route.snapshot.params['genre'] ?? " ";
+      this.sort = this.route.snapshot.params['sort'] ?? " ";
+      if(this.plataforma != " ")
       {
-        console.log("genero");
-        const data = await this.api.filtrarGenero(this.parametro);
-        this.juegos = data;
-        console.log(this.juegos);
+        if(this.genero != " ")
+        {
+          this.juegos = await this.api.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${this.genero}&platform=${this.plataforma}`);
+        } else
+        {
+          this.juegos = await this.api.filtrarPlataforma(this.plataforma);
+        }
+      } else if (this.genero != " ")
+      {
+        this.juegos = await this.api.filtrarGenero(this.genero);
+      }else if(this.sort != " ")
+      {
+        this.juegos = await this.api.ordenarJuegos(this.sort);
       }
-      else if(this.case == 2)
-      {
-        console.log("plataforma");
-        const data = await this.api.filtrarPlataforma(this.parametro);
-        this.juegos = data;
-        console.log(this.juegos);
-      }
-      else
-      {
-        throw new Error("Error al filtrar juegos");
-      } 
     } catch (error) {
       console.log("Ocurrio un error", error);
     }

@@ -9,6 +9,8 @@ import { InfoMargenComponent } from './components/info-margen/info-margen.compon
 import { DescJuegoComponent } from './components/desc-juego/desc-juego.component';
 import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.component';
 import { MiniaturaComponent } from './components/miniatura/miniatura.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MiniaturaComponent } from './components/miniatura/miniatura.component';
     InfoMargenComponent,
     DescJuegoComponent,
     VistaFiltroComponent,
-    MiniaturaComponent
+    MiniaturaComponent,
+    HomePageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
