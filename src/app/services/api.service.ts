@@ -49,16 +49,41 @@ ordenarJuegos(ordenarPor: string)
     return this.obtenerDatos (`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=${ordenarPor}`);
 }
 
-ordenarPersonalizado (filtro: string, plataforma: string)
+/*ordenarPersonalizado (genero: string, plataforma: string, sort: string)
 {
-    //Ej. filtro shooter.pvp.3d
-    if (plataforma == null)
+    if(plataforma != " ")
     {
-        return this.obtenerDatos(`https://www.freetogame.com/api/filter?tag=${filtro}&platform=all`);
+        if(genero != " ")
+        {
+            if(sort != " ")
+            { 
+                return this.obtenerDatos(`https://www.freetogame.com/api/games?platform=${plataforma}&category=${genero}&sort-by=${sort}`);
+            }
+            else
+            {
+                return this.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${genero}&platform=${plataforma}`);
+            }
+        }
+        else if (sort != " ")
+        {
+            return this.obtenerDatos(`https://www.freetogame.com/api/games?platform=${plataforma}&sort-by=${sort}`);
+        }
+        else
+        {
+            return this.filtrarPlataforma(plataforma);
+        }
     }
-    else
+    else 
     {
-        return this.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${filtro}&platform=${plataforma}`);
+        if(sort != " ")
+        {
+            return this.obtenerDatos(`https://www.freetogame.com/api/games?category=${genero}&sort-by=${sort}`);
+        }
+        else
+        {
+            return this.filtrarGenero(genero);
+        }
     }
-}
+    //return this.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${filtro}&platform=${plataforma}&sort-by=${sort}`);
+}*/
 }

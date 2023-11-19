@@ -1,0 +1,18 @@
+<p>Bienvenido a F2P</p><br><br>
+<p>Explora el mayor catalogo de juegos gratis del mundo</p><br>
+<a href="">Iniciar sesion   </a><a routerLink='/filterp/all'>    Explorar juegos</a><br>
+<p>Lo mas jugado</p><br>
+<div *ngFor="let juego of juegosPopulares">
+    <app-miniatura imagen="{{juego.thumbnail}}"
+    titulo="{{juego.title}}"
+    descripcion="{{juego.short_description}}"
+    [id]="juego.id"></app-miniatura>
+</div><br><br>
+<p>Recien anadidos</p><br>
+<div *ngFor="let juego of juegosRecienAnadidos">
+    <app-miniatura imagen="{{juego.thumbnail}}"
+    titulo="{{juego.title}}"
+    descripcion="{{juego.short_description}}"
+    [id]="juego.id"></app-miniatura>
+</div>
+

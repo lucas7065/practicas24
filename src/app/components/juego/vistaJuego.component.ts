@@ -16,15 +16,23 @@ export class vistaJuegoComponent {
 
   juego: any;
 
-  async ngOnInit() {
+  async ngOnInit(){
+
+    this.route.params.subscribe(
+      (params: any) => {
+        if(params.id)
+        {
+          this.id = params.id;
+        }
+    }
+    );
+
     try {
       const data = await this.api.descripcionJuego(this.id);
       this.juego = data;
-      console.log(this.juego);
     } catch (error) {
       console.log("Ocurrio un error", error);
     }
-    console.log(this.juego.title);
   }
   }
 
