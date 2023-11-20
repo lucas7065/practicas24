@@ -1,14 +1,15 @@
 <div class="navbar">
     <a routerLink="">Inicio</a>
-    <a href="#news">Noticias</a>
+   <mat-form-field>
+          <input matInput placeholder="Buscar juegos" [(ngModel)]="busqueda">
+   </mat-form-field>
+      <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Buscar</button>
     <div class="dropdown">
        <button class="dropbtn">Generos 
          <i class="fa fa-caret-down"></i>
        </button>
-       <div class="dropdown-content">
-         <a href="#">Categoria 1</a>
-         <a href="#">Categoria 2</a>
-         <a href="#">Categoria 3</a>
+       <div class="dropdown-content" >
+          <a *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</a>
        </div>
     </div> 
     <div class="dropdown">
@@ -16,10 +17,17 @@
          <i class="fa fa-caret-down"></i>
        </button>
        <div class="dropdown-content">
-         <a routerLink='/filterp/pc'>PC</a>
-         <a routerLink='/filterp/browser'>Browser</a>
+        <a *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</a>
        </div>
     </div> 
-    <a href="#profile" class="right">Perfil</a>
+    <div class="dropdown">
+      <button class="dropbtn">Ordenar por 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+       <a *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</a>
+      </div>
    </div>
+   <a href="#profile" class="right">Perfil</a>
+</div>
 <router-outlet></router-outlet>

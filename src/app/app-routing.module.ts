@@ -7,12 +7,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: 'home', component: HomePageComponent},
+  {path: 'home', pathMatch: 'full', component: HomePageComponent},
   {path: 'viewGame/:id', component: vistaJuegoComponent},
-  {path: 'filterp/:plataforma', component: VistaFiltroComponent},
+  {path: 'filterp/:plataforma', pathMatch: 'full', component: VistaFiltroComponent},
   {path: 'filterpg/:plataforma/:genre', component: VistaFiltroComponent},
   {path: 'filterg/:genre', component: VistaFiltroComponent},
   {path: 'filters/:sort', component: VistaFiltroComponent},
+  {path: 'search/:busqueda', component: VistaFiltroComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
