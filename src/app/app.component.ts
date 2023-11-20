@@ -21,7 +21,7 @@ export class AppComponent {
   sorts: Array<string> = ['Alphabetical','Release-date', 'Relevance', 'Popularity'];
 
   buscar = document.getElementById("buscar") as HTMLAnchorElement;
-  busqueda: string = " ";
+  busqueda: string = "";
 
   async fireEvent(e: Event)
   {

@@ -14,8 +14,13 @@ export class DescJuegoComponent {
   @Input() distribuidor: string = " ";
   @Input() fechaLanzamiento: string = " ";
   @Input() plataforma: string = " ";
+  
   ngOnInit(): void{
-    
+    if(this.plataforma == "Web Browser")
+    {
+      let requisitos = document.getElementById("contenedorRequisitos") as HTMLAnchorElement;
+      requisitos.setAttribute("hidden","true");
+    }  
   }
 
 }

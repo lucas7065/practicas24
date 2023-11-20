@@ -9,4 +9,7 @@
     [distribuidor]="juego.publisher"
     [fechaLanzamiento]="juego.release_date"
     [plataforma]="juego.platform"></app-desc-juego>
+    <div *ngFor="let img of juego.screenshots">
+        <img src="{{img.image}}" alt="{{juego.title}}">
+    </div>
 </div>
