@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-filtro',
@@ -17,14 +17,21 @@ export class VistaFiltroComponent {
 
   @Input() busqueda: string = " ";
 
-  juegos: any = " ";
+  juegos: any = " "; 
 
   async ngOnInit() {
       try {
         this.busqueda = this.route.snapshot.params['busqueda'] ?? " ";
         if(this.busqueda == " ")
         {
-          this.plataforma = this.route.snapshot.params['plataforma'] ?? " ";
+          this.route.params.subscribe((params: any)=>{
+            if(params.plataforma)
+            {
+              this.plataforma = params.plataforma;
+              console.log(this.plataforma);
+            }
+          });
+          
           this.genero = this.route.snapshot.params['genre'] ?? " ";
           this.sort = this.route.snapshot.params['sort'] ?? " ";
           if(this.plataforma != " ")
@@ -51,7 +58,6 @@ export class VistaFiltroComponent {
           this.juegos.forEach((juego: (any)) => {
           if(juego.title.toLowerCase().includes(this.busqueda.toLocaleLowerCase()))
           {
-            console.log(juego);
             juegosAux.push(juego);
           }
           });

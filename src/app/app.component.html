@@ -1,7 +1,7 @@
 <div class="navbar">
     <a routerLink="">Inicio</a>
    <mat-form-field>
-          <input matInput placeholder="Buscar juegos" [(ngModel)]="busqueda">
+          <input matInput placeholder="Buscar juegos" autocomplete="off" [(ngModel)]="busqueda">
    </mat-form-field>
       <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Buscar</button>
     <div class="dropdown">

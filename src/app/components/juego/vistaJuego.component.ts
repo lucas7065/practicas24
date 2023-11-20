@@ -30,6 +30,7 @@ export class vistaJuegoComponent {
     try {
       const data = await this.api.descripcionJuego(this.id);
       this.juego = data;
+      console.log(this.juego);
     } catch (error) {
       console.log("Ocurrio un error", error);
     }
