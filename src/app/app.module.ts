@@ -11,6 +11,10 @@ import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.com
 import { MiniaturaComponent } from './components/miniatura/miniatura.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import {FormsModule} from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,15 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     VistaFiltroComponent,
     MiniaturaComponent,
     HomePageComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

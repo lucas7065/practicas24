@@ -15,32 +15,62 @@ export class VistaFiltroComponent {
   @Input() genero: string = " ";
   @Input() sort: string = " ";
 
-  juegos: any;
+  @Input() busqueda: string = " ";
+
+  juegos: any = " ";
 
   async ngOnInit() {
-    try {
-      this.plataforma = this.route.snapshot.params['plataforma'] ?? " ";
-      this.genero = this.route.snapshot.params['genre'] ?? " ";
-      this.sort = this.route.snapshot.params['sort'] ?? " ";
-      if(this.plataforma != " ")
-      {
-        if(this.genero != " ")
+      try {
+        this.busqueda = this.route.snapshot.params['busqueda'] ?? " ";
+        if(this.busqueda == " ")
         {
-          this.juegos = await this.api.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${this.genero}&platform=${this.plataforma}`);
-        } else
-        {
-          this.juegos = await this.api.filtrarPlataforma(this.plataforma);
+          this.plataforma = this.route.snapshot.params['plataforma'] ?? " ";
+          this.genero = this.route.snapshot.params['genre'] ?? " ";
+          this.sort = this.route.snapshot.params['sort'] ?? " ";
+          if(this.plataforma != " ")
+          {
+            if(this.genero != " ")
+            {
+              this.juegos = await this.api.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${this.genero}&platform=${this.plataforma}`);
+            } else
+            {
+              this.juegos = await this.api.filtrarPlataforma(this.plataforma);
+            }
+          } else if (this.genero != " ")
+          {
+            this.juegos = await this.api.filtrarGenero(this.genero);
+          }else if(this.sort != " ")
+          {
+            this.juegos = await this.api.ordenarJuegos(this.sort);
+          }
         }
-      } else if (this.genero != " ")
-      {
-        this.juegos = await this.api.filtrarGenero(this.genero);
-      }else if(this.sort != " ")
-      {
-        this.juegos = await this.api.ordenarJuegos(this.sort);
+        else
+        {
+          this.juegos = await this.api.filtrarPlataforma("all");
+          let juegosAux = new Array<any>;
+          this.juegos.forEach((juego: (any)) => {
+          if(juego.title.toLowerCase().includes(this.busqueda.toLocaleLowerCase()))
+          {
+            console.log(juego);
+            juegosAux.push(juego);
+          }
+          });
+          if(juegosAux.length == 0)
+          {
+            let respuesta = document.createElement('p');
+            respuesta.innerHTML = "No se han encontrado coincidencias en la busqueda";
+          }
+          else
+          {
+            this.juegos = juegosAux;
+          }
+        }
+      } catch (error) {
+        console.log("Ocurrio un error", error);
       }
-    } catch (error) {
-      console.log("Ocurrio un error", error);
     }
+    
   }
 
-}
+
+
