@@ -1,0 +1,19 @@
+header{
+    color: rgb(14, 14, 122);
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#contenedorDescripcion{
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#infoJuego{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+

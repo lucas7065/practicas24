@@ -15,4 +15,8 @@ export class InfoMargenComponent {
   ngOnInit(){
   }
 
+  agregarFavorito(){
+    
+  }
+
 }

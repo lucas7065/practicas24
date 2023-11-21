@@ -1,18 +1,23 @@
-<p>Bienvenido a F2P</p><br><br>
-<p>Explora el mayor catalogo de juegos gratis del mundo</p><br>
-<a href="">Iniciar sesion   </a><a routerLink='/filterp/all'>    Explorar juegos</a><br>
-<p>Lo mas jugado</p><br>
-<div *ngFor="let juego of juegosPopulares">
-    <app-miniatura imagen="{{juego.thumbnail}}"
+<h1>Bienvenido a F2P</h1>
+<div class="subtitulo">
+    <h3>Explora el mayor catalogo de juegos gratis del mundo</h3>
+    <a routerLink='/filterp/all'>Ver todos los juegos</a>
+</div> <br>
+
+<h2>LO MAS JUGADO</h2>
+<div class="mostrar" *ngFor="let juego of juegosPopulares">
+    <app-miniatura 
+    imagen="{{juego.thumbnail}}"
     titulo="{{juego.title}}"
-    descripcion="{{juego.short_description}}"
-    [id]="juego.id"></app-miniatura>
-</div><br><br>
-<p>Recien anadidos</p><br>
-<div *ngFor="let juego of juegosRecienAnadidos">
-    <app-miniatura imagen="{{juego.thumbnail}}"
+    [id]="juego.id">
+</app-miniatura>
+</div>
+<h2>RECIEN AÑADIDO</h2>
+<div class="mostrar" *ngFor="let juego of juegosRecienAnadidos">
+    <app-miniatura 
+    imagen="{{juego.thumbnail}}"
     titulo="{{juego.title}}"
-    descripcion="{{juego.short_description}}"
-    [id]="juego.id"></app-miniatura>
+    [id]="juego.id">
+</app-miniatura>
 </div>
 

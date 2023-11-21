@@ -1,7 +1,11 @@
+.imagenes{
+    text-align: center;
+}
 
-#grid-layout{
-    display: grid;
-    background-color: aquamarine;
-    width:auto;
-    padding: 20px;
+img{
+    width: 300px;
+    display: inline-flex;
+    text-align: center;
+    padding: 1px;
+    justify-content:space-around;
 }

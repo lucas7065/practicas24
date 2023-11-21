@@ -1,0 +1,7 @@
+img{
+    width: 300px;
+    display: inline-flex;
+    text-align: center;
+    padding: 1px;
+    justify-content:space-around;
+}

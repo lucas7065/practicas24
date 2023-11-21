@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { vistaJuegoComponent } from './components/juego/vistaJuego.component';
 import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
 import { NotFoundComponent } from './components/not-found/not-found.component';
+
+
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -14,6 +18,8 @@ const routes: Routes = [
   {path: 'filterg/:genre', component: VistaFiltroComponent},
   {path: 'filters/:sort', component: VistaFiltroComponent},
   {path: 'search/:busqueda', component: VistaFiltroComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent },
   {path: '**', component: NotFoundComponent}
 ];
 

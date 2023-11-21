@@ -6,3 +6,7 @@
     cursor: pointer;
     border: none;
 }
+
+#btnJugar:hover{
+    background-color: #64c269;
+}

@@ -7,8 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
 
+export class HomePageComponent {
   constructor(private api: ApiService, private route: ActivatedRoute){}
 
   juegosPopulares: any;
@@ -24,6 +24,8 @@ export class HomePageComponent {
       
     }
   }
-  
-
 }
+
+
+
+

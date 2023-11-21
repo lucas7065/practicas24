@@ -1,4 +1,4 @@
-<div class="grid-layout">
+<div>
     <app-info-margen [titulo]="juego.title"
     [miniatura]="juego.thumbnail"
     [url]="juego.game_url"></app-info-margen>
@@ -9,7 +9,8 @@
     [distribuidor]="juego.publisher"
     [fechaLanzamiento]="juego.release_date"
     [plataforma]="juego.platform"></app-desc-juego>
-    <div *ngFor="let img of juego.screenshots">
-        <img src="{{img.image}}" alt="{{juego.title}}">
+    <div class="imagenes">
+        <img *ngFor="let img of juego.screenshots" src="{{img.image}}" alt="{{juego.title}}">
     </div>
+    
 </div>
