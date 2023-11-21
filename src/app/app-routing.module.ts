@@ -6,6 +6,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { VistaFavoritosComponent } from './components/vista-favoritos/vista-favoritos.component';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'search/:busqueda', component: VistaFiltroComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent },
+  {path: 'myGames', component: VistaFavoritosComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

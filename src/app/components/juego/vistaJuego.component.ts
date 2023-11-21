@@ -13,8 +13,11 @@ export class vistaJuegoComponent {
   constructor(private api: ApiService, private route: ActivatedRoute){ }
 
   @Input() id: number = 0;
+  @Input() genero: string = " ";
 
   juego: any;
+
+  juegosRecomendados: any;
 
   async ngOnInit(){
 
@@ -30,7 +33,8 @@ export class vistaJuegoComponent {
     try {
       const data = await this.api.descripcionJuego(this.id);
       this.juego = data;
-      console.log(this.juego);
+      this.juegosRecomendados = await this.api.filtrarGenero(this.juego.genre.toLocaleLowerCase());
+      this.juegosRecomendados = this.juegosRecomendados.filter((recomendado: any) => recomendado.title != this.juego.title).slice(0,5);
     } catch (error) {
       console.log("Ocurrio un error", error);
     }

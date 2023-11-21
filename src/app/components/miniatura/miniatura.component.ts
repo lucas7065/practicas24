@@ -17,10 +17,6 @@ export class MiniaturaComponent {
 
   ngOnInit()
   {
-    const redireccionar = document.getElementById("redireccionar") as HTMLAnchorElement;
-    /*redireccionar.addEventListener("click", (event)=>{
-      [RouterLink] = ['/viewGame/', this.id];
-    })*/
   }
   
 }
