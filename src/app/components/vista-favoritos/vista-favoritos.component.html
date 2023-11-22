@@ -1,0 +1,10 @@
+<div class="vistaFavoritos" *ngFor="let juego of juegos">
+    <app-miniatura-favoritos [descripcion]="juego.description"
+    [imagen]="juego.thumbnail"
+    [titulo]="juego.title"
+    [id]="juego.id"></app-miniatura-favoritos>
+    <div>
+        <button id="borrar" (click) = 'eliminarJuego(juego.id)'>X</button>
+    </div>
+</div>
+

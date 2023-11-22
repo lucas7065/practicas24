@@ -5,7 +5,10 @@ import { VistaFiltroComponent } from './components/vista-filtro/vista-filtro.com
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { VistaFavoritosComponent } from './components/vista-favoritos/vista-favoritos.component';
+import { MiniaturaFavoritosComponent } from './components/miniatura-favoritos/miniatura-favoritos.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 
 
@@ -19,7 +22,8 @@ const routes: Routes = [
   {path: 'filters/:sort', component: VistaFiltroComponent},
   {path: 'search/:busqueda', component: VistaFiltroComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent },
+  {path: 'register', component: RegisterComponent},
+  {path: 'mygames', component: VistaFavoritosComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

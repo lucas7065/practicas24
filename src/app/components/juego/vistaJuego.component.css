@@ -1,4 +1,15 @@
+*{
+    text-align: center;
+}
+
 .imagenes{
+    text-align: center;
+}
+
+h4{
+    color: rgb(14, 14, 122);
+    margin-top: 15px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -8,4 +19,11 @@ img{
     text-align: center;
     padding: 1px;
     justify-content:space-around;
+}
+
+.recomendado{
+    display: inline-flex;
+    text-align: center;
+    padding: 1px;
+    cursor: pointer;  
 }

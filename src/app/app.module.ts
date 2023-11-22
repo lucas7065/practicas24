@@ -18,6 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { VistaFavoritosComponent } from './components/vista-favoritos/vista-favoritos.component';
+import { MiniaturaFavoritosComponent } from './components/miniatura-favoritos/miniatura-favoritos.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { LoginComponent } from './components/login/login.component';
     NotFoundComponent,
     RegisterComponent,
     LoginComponent,
+    PerfilUsuarioComponent,
+    VistaFavoritosComponent,
+    MiniaturaFavoritosComponent,
   ],
   imports: [
     BrowserModule,

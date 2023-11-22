@@ -1,10 +1,11 @@
-<h1>Bienvenido a F2P</h1>
+<h1>Welcome to F2P</h1>
 <div class="subtitulo">
-    <h3>Explora el mayor catalogo de juegos gratis del mundo</h3>
-    <a routerLink='/filterp/all'>Ver todos los juegos</a>
+    <h3>Explore the largest catalog of free games in the world</h3>
+    <a routerLink='/filterp/all'>See all games</a>
 </div> <br>
 
-<h2>LO MAS JUGADO</h2>
+<div class="previewJuegos">
+<h2>MOST PLAYED</h2>
 <div class="mostrar" *ngFor="let juego of juegosPopulares">
     <app-miniatura 
     imagen="{{juego.thumbnail}}"
@@ -12,7 +13,7 @@
     [id]="juego.id">
 </app-miniatura>
 </div>
-<h2>RECIEN AÑADIDO</h2>
+<h2>JUST ADDED</h2>
 <div class="mostrar" *ngFor="let juego of juegosRecienAnadidos">
     <app-miniatura 
     imagen="{{juego.thumbnail}}"
@@ -20,4 +21,4 @@
     [id]="juego.id">
 </app-miniatura>
 </div>
-
+</div>

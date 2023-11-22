@@ -1,12 +1,12 @@
 <div class="navbar">
    <a routerLink=""><img src="../assets/logoZoom.png" alt="logo"></a>
    <div class="barraBusqueda">
-      <input placeholder="Buscar juegos" autocomplete="off" [(ngModel)]="busqueda" id="search-input">
-      <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Buscar</button>
+      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input">
+      <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Search</button>
    </div>
    
     <div class="dropdown">
-       <button class="dropbtn">Generos 
+       <button class="dropbtn">Genres 
          <i class="fa fa-caret-down"></i>
        </button>
        <div class="dropdown-content" >
@@ -14,7 +14,7 @@
        </div>
     </div> 
     <div class="dropdown">
-       <button class="dropbtn">Plataformas 
+       <button class="dropbtn">Platforms 
          <i class="fa fa-caret-down"></i>
        </button>
        <div class="dropdown-content">
@@ -22,7 +22,7 @@
        </div>
     </div> 
     <div class="dropdown">
-      <button class="dropbtn">Ordenar 
+      <button class="dropbtn">Order by
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
@@ -30,17 +30,14 @@
       </div>
    </div>
    <div class="dropdown">
-      <button class="dropbtn">Perfil
+      <button class="dropbtn">Profile
          <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-         <a routerLink="/login">Iniciar Sesion</a>
-         <a routerLink="/register">Registrarse</a> 
+         <a routerLink="/login">Login</a>
+         <a routerLink="/register">Register</a> 
       </div>
    </div>
-
-   
-
 
 </div>
 <router-outlet></router-outlet>

@@ -1,6 +1,11 @@
-<div *ngFor="let juego of juegos">
-    <app-miniatura imagen="{{juego.thumbnail}}"
-    titulo="{{juego.title}}"
-    descripcion="{{juego.short_description}}"
-    [id]="juego.id"></app-miniatura>
+
+<div >
+    <div class="previewJuegos"*ngFor="let juego of juegos">
+        <app-miniatura 
+        imagen="{{juego.thumbnail}}"
+        titulo="{{juego.title}}"
+        [id]="juego.id">
+    </app-miniatura>
+    </div>
 </div>
+

@@ -1,11 +1,11 @@
 <div class="register">
-    <form class="custom-form" method="post" (ngSubmit)="onSubmit()" #registroForm="ngForm">
-      <h1>Registro de usuario</h1>
-      <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="usuario.nombre" required>
-      <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="usuario.apellido" required>
-      <input type="email" name="email" id="email" placeholder="Correo" [(ngModel)]="usuario.email" required>
-      <input type="password" name="password" id="password" placeholder="Contraseña" [(ngModel)]="usuario.password" required>
+  <form class="custom-form" method="post" (ngSubmit)="onSubmit()" #registroForm="ngForm">
+    <h1>Registro de usuario</h1>
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="usuario.nombre" required>
+    <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="usuario.apellido" required>
+    <input type="email" name="email" id="email" placeholder="Correo" [(ngModel)]="usuario.email" required>
+    <input type="password" name="password" id="password" placeholder="Contraseña" [(ngModel)]="usuario.password" required>
     
-      <button type="submit" (click)="register()" [disabled]="!registroForm.form.valid">Registrarse</button>
-    </form>
-  </div>
+    <button type="submit" (click)="register()" [disabled]="!registroForm.form.valid">Registrarse</button>
+  </form>
+</div>

@@ -41,6 +41,11 @@ onSubmit():void {
 
 register() {
   const user = {nombre: this.usuario.nombre, apellido: this.usuario.apellido ,email: this.usuario.email, password: this.usuario.password};
+  if(!user.apellido || !user.nombre || !user.email){
+
+  }
+  
+  
   this.userService.register(user).subscribe((data)=>{
     console.log(data);
   })  

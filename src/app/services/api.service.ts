@@ -49,7 +49,7 @@ ordenarJuegos(ordenarPor: string)
     return this.obtenerDatos (`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=${ordenarPor}`);
 }
 
-/*ordenarPersonalizado (genero: string, plataforma: string, sort: string)
+ordenarPersonalizado (genero: string, plataforma: string, sort: string)
 {
     if(plataforma != " ")
     {
@@ -85,5 +85,5 @@ ordenarJuegos(ordenarPor: string)
         }
     }
     //return this.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${filtro}&platform=${plataforma}&sort-by=${sort}`);
-}*/
+}
 }
