@@ -1,0 +1,29 @@
+.perfil-usuario-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .perfil-usuario-container h2 {
+    color: #333;
+  }
+  
+  .perfil-usuario-container p {
+    margin-bottom: 10px;
+  }
+  
+  .perfil-usuario-container button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .perfil-usuario-container button:hover {
+    background-color: #45a049;
+  }

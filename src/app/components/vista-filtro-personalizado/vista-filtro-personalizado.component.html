@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="dropdown">
+    <button mat-flat-button [mat-menu-trigger-for]="menuGenre" class="dropbtn">Genre: {{genre}} 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <mat-menu #menuGenre="matMenu" class="dropdown-content" >
+       <button mat-menu-item *ngFor='let genero of generos' (click)="actualizarGenero(genero)">{{genero.replace("-", " ")}}</button>
+    </mat-menu>
+ </div> 
+ <div class="dropdown">
+    <button mat-flat-button [mat-menu-trigger-for]="menuPlatform" class="dropbtn">Platform: {{platform}} 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <mat-menu #menuPlatform="matMenu" class="dropdown-content">
+     <button mat-menu-item *ngFor='let plataforma of plataformas'(click)="actualizarPlataforma(plataforma)">{{plataforma}}</button>
+    </mat-menu>
+ </div> 
+ <div class="dropdown">
+   <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by: {{orderBy}}
+     <i class="fa fa-caret-down"></i>
+   </button>
+   <mat-menu #order="matMenu" class="dropdown-content">
+    <button mat-menu-item *ngFor='let sort of sorts' (click)="actualizarOrden(sort)">{{sort.replace("-", " ")}}</button>
+   </mat-menu>
+  </div>
+<button mat-flat-button id="buscar" (click)="buscar()">Search</button>
+</nav>
+<div *ngIf="juegos != ' '">
+  <div id="miniatura" *ngFor="let juego of juegos">
+      <app-miniatura imagen="{{juego.thumbnail}}"
+      titulo="{{juego.title}}"
+      descripcion="{{juego.short_description}}"
+      [id]="juego.id"></app-miniatura>
+  </div>
+</div>
+
