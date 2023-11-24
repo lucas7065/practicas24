@@ -1,43 +1,46 @@
 <div class="navbar">
    <a routerLink=""><img src="../assets/logoZoom.png" alt="logo"></a>
    <div class="barraBusqueda">
-      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input">
+      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input" >
       <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Search</button>
    </div>
    
     <div class="dropdown">
-       <button class="dropbtn">Genres 
+       <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
          <i class="fa fa-caret-down"></i>
        </button>
-       <div class="dropdown-content" >
-          <a *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</a>
-       </div>
+       <mat-menu #genre="matMenu" class="dropdown-content" >
+         <button mat-menu-item routerLink="/filter">Advanced filter</button>
+         <button mat-menu-item *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</button>
+       </mat-menu>
     </div> 
     <div class="dropdown">
-       <button class="dropbtn">Platforms 
+       <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
          <i class="fa fa-caret-down"></i>
        </button>
-       <div class="dropdown-content">
-        <a *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</a>
-       </div>
+       <mat-menu #platform="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/filter">Advanced filter</button>
+         <button mat-menu-item *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</button>
+       </mat-menu>
     </div> 
     <div class="dropdown">
-      <button class="dropbtn">Order by
+      <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
         <i class="fa fa-caret-down"></i>
       </button>
-      <div class="dropdown-content">
-       <a *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</a>
-      </div>
+      <mat-menu #order="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/filter">Advanced filter</button>
+         <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
+      </mat-menu>
    </div>
    <div class="dropdown">
-      <button class="dropbtn">Profile
+      <button mat-flat-button [matMenuTriggerFor]="profile" class="dropbtn">Perfil
          <i class="fa fa-caret-down"></i>
       </button>
-      <div class="dropdown-content">
-         <a routerLink="/login">Login</a>
-         <a routerLink="/register">Register</a> 
-      </div>
+      <mat-menu #profile="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/login">Iniciar Sesion</button>
+         <button mat-menu-item routerLink="/register">Registrarse</button> 
+      </mat-menu>
    </div>
-
 </div>
 <router-outlet></router-outlet>
+

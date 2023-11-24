@@ -47,7 +47,6 @@ register() {
   
   
   this.userService.register(user).subscribe((data)=>{
-    console.log(data);
   })  
 }
 

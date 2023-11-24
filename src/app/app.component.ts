@@ -22,12 +22,4 @@ export class AppComponent {
 
   buscar = document.getElementById("buscar") as HTMLAnchorElement;
   busqueda: string = "";
-
-  async fireEvent(e: Event)
-  {
-    e.stopPropagation();
-    e.preventDefault();
-    console.log(this.busqueda);
-    
-  }
 }

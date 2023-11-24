@@ -1,11 +1,14 @@
-
-<div >
-    <div class="previewJuegos"*ngFor="let juego of juegos">
-        <app-miniatura 
-        imagen="{{juego.thumbnail}}"
-        titulo="{{juego.title}}"
-        [id]="juego.id">
-    </app-miniatura>
-    </div>
+<div *ngIf="juegos != 'Null' && juegos != ' '">
+        <div class="previewJuegos"*ngFor="let juego of juegos">
+            <app-miniatura 
+            imagen="{{juego.thumbnail}}"
+            titulo="{{juego.title}}"
+            [id]="juego.id">
+        </app-miniatura>
+        </div>
 </div>
+<div *ngIf="juegos == ' '">
+    <p>Sorry, no games found!</p>
+</div>
+
 

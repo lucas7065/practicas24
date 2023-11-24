@@ -57,16 +57,16 @@ ordenarPersonalizado (genero: string, plataforma: string, sort: string)
         {
             if(sort != " ")
             { 
-                return this.obtenerDatos(`https://www.freetogame.com/api/games?platform=${plataforma}&category=${genero}&sort-by=${sort}`);
+                return this.obtenerDatos(`https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${plataforma}&category=${genero}&sort-by=${sort}`);
             }
             else
             {
-                return this.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${genero}&platform=${plataforma}`);
+                return this.obtenerDatos(`https://free-to-play-games-database.p.rapidapi.com/api/filter?tag=${genero}&platform=${plataforma}`);
             }
         }
         else if (sort != " ")
         {
-            return this.obtenerDatos(`https://www.freetogame.com/api/games?platform=${plataforma}&sort-by=${sort}`);
+            return this.obtenerDatos(`https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${plataforma}&sort-by=${sort}`);
         }
         else
         {
@@ -77,7 +77,7 @@ ordenarPersonalizado (genero: string, plataforma: string, sort: string)
     {
         if(sort != " ")
         {
-            return this.obtenerDatos(`https://www.freetogame.com/api/games?category=${genero}&sort-by=${sort}`);
+            return this.obtenerDatos(`https://free-to-play-games-database.p.rapidapi.com/api/games?platform=all&category=${genero}&sort-by=${sort}`);
         }
         else
         {

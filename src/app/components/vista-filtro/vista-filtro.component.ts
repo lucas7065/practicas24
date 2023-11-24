@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChange } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class VistaFiltroComponent {
 
-  constructor(private api: ApiService, private route: ActivatedRoute){ }
+  constructor(private api: ApiService, private route: ActivatedRoute){} 
 
   @Input() plataforma: string = " ";
   @Input() genero: string = " ";
@@ -17,62 +17,64 @@ export class VistaFiltroComponent {
 
   @Input() busqueda: string = " ";
 
-  juegos: any = " "; 
+  juegos: any = "Null";
 
   async ngOnInit() {
       try {
-        this.busqueda = this.route.snapshot.params['busqueda'] ?? " ";
+        this.route.params.subscribe(async (params: any)=>{
+          if(params.busqueda)
+          {
+            this.busqueda = params.busqueda;
+            this.buscarJuegos();
+          }
+        });
         if(this.busqueda == " ")
         {
-          this.route.params.subscribe((params: any)=>{
+          this.route.params.subscribe(async (params: any)=>{
             if(params.plataforma)
             {
               this.plataforma = params.plataforma;
-              console.log(this.plataforma);
+              this.juegos = await this.api.ordenarPersonalizado(this.genero, this.plataforma, this.sort);
             }
           });
-          
-          this.genero = this.route.snapshot.params['genre'] ?? " ";
-          this.sort = this.route.snapshot.params['sort'] ?? " ";
-          if(this.plataforma != " ")
-          {
-            if(this.genero != " ")
-            {
-              this.juegos = await this.api.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${this.genero}&platform=${this.plataforma}`);
-            } else
-            {
-              this.juegos = await this.api.filtrarPlataforma(this.plataforma);
-            }
-          } else if (this.genero != " ")
-          {
-            this.juegos = await this.api.filtrarGenero(this.genero);
-          }else if(this.sort != " ")
-          {
-            this.juegos = await this.api.ordenarJuegos(this.sort);
-          }
-        }
-        else
-        {
-          this.juegos = await this.api.filtrarPlataforma("all");
-          let juegosAux = new Array<any>;
-          this.juegos.forEach((juego: (any)) => {
-          if(juego.title.toLowerCase().includes(this.busqueda.toLocaleLowerCase()))
-          {
-            juegosAux.push(juego);
-          }
+          this.route.params.subscribe(async (params: any)=>{
+              if(params.genre)
+              {
+                this.genero = params.genre;
+                this.juegos = await this.api.ordenarPersonalizado(this.genero, this.plataforma, this.sort);
+              }
           });
-          if(juegosAux.length == 0)
-          {
-            let respuesta = document.createElement('p');
-            respuesta.innerHTML = "No se han encontrado coincidencias en la busqueda";
-          }
-          else
-          {
-            this.juegos = juegosAux;
-          }
+          this.route.params.subscribe(async (params: any)=>{
+            if(params.sort)
+            {
+              this.sort = params.sort;
+              this.juegos = await this.api.ordenarJuegos(this.sort);
+            }
+          });
+          this.juegos = await this.api.ordenarPersonalizado(this.genero, this.plataforma, this.sort);
         }
       } catch (error) {
         console.log("Ocurrio un error", error);
+      }
+    }
+
+    async buscarJuegos(){
+      this.juegos = " ";
+      let todos = await this.api.filtrarPlataforma("all");
+      let juegosAux = new Array<any>;
+      todos.forEach((juego: (any)) => {
+      if(juego.title.toLowerCase().includes(this.busqueda.toLocaleLowerCase()))
+      {
+        juegosAux.push(juego);
+      }
+      });
+      if(juegosAux.length == 0)
+      {
+        document.getElementById("previewJuegos")?.setAttribute('hidden', 'true');
+      }
+      else
+      {
+        this.juegos = juegosAux;
       }
     }
     

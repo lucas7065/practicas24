@@ -13,6 +13,7 @@ export class vistaJuegoComponent {
   constructor(private api: ApiService, private route: ActivatedRoute){ }
 
   @Input() id: number = 0;
+  @Input() genero: string = " ";
 
   juego: any;
   juegosRecomendados: any;

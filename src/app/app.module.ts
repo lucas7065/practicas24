@@ -15,12 +15,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
-import { VistaFavoritosComponent } from './components/vista-favoritos/vista-favoritos.component';
 import { MiniaturaFavoritosComponent } from './components/miniatura-favoritos/miniatura-favoritos.component';
+import { VistaFavoritosComponent } from './components/vista-favoritos/vista-favoritos.component';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { VistaFiltroPersonalizadoComponent } from './components/vista-filtro-personalizado/vista-filtro-personalizado.component';
 
 
 @NgModule({
@@ -36,18 +38,20 @@ import { MiniaturaFavoritosComponent } from './components/miniatura-favoritos/mi
     NotFoundComponent,
     RegisterComponent,
     LoginComponent,
-    PerfilUsuarioComponent,
-    VistaFavoritosComponent,
     MiniaturaFavoritosComponent,
+    VistaFavoritosComponent,
+    PerfilUsuarioComponent,
+    VistaFiltroPersonalizadoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatInputModule,
     MatButtonModule,
+    MatMenuModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
