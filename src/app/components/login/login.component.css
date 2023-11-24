@@ -46,3 +46,64 @@
     box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
     cursor: pointer;
   }
+
+  #perfil-usuario-container{
+    display: none;
+  }
+
+
+  .perfil-usuario-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .perfil-usuario-container h2 {
+    color: #333;
+  }
+  
+  .perfil-usuario-container p {
+    margin-bottom: 10px;
+  }
+  
+  .perfil-usuario-container button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .perfil-usuario-container button:hover {
+    background-color: #45a049;
+  }
+  
+
+
+  .error-container {
+    display: none;
+    background-color: #ffcccc;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #e74c3c;
+    border-radius: 5px;
+  }
+
+  /* Estilo para el mensaje de error */
+  .error-message {
+    color: #e74c3c;
+    margin: 0;
+  }
+
+  .botones{
+  justify-content: space-between;
+}
+
+button{
+  margin: 4px;
+  padding: 5px;
+}

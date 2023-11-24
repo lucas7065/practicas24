@@ -22,4 +22,7 @@ export class AppComponent {
 
   buscar = document.getElementById("buscar") as HTMLAnchorElement;
   busqueda: string = "";
+
+
+  
 }

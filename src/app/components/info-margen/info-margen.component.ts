@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { PerfilUsuarioComponent } from '../perfil-usuario/perfil-usuario.component';
 
 @Component({
   selector: 'app-info-margen',
@@ -11,12 +11,16 @@ export class InfoMargenComponent {
   @Input() titulo: string = " ";
   @Input() miniatura: string = " ";
   @Input() url: string = " ";
+  @Input() id: number = 0;
 
   ngOnInit(){
   }
 
   agregarFavorito(){
-    
+    var idUsuario = localStorage.getItem("email");
+    console.log(idUsuario);
   }
+
+  
 
 }

@@ -15,8 +15,8 @@ export class MiniaturaComponent {
   @Input() titulo: string = " ";
   @Input() id: number = 0;
 
-  ngOnInit()
-  {
+  ngOnInit(){
+    
   }
   
 }

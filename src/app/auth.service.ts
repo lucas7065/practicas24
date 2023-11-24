@@ -3,9 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
+
+
+interface UserInfo {
+  email: string,
+  password: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private apiUrl = 'http://localhost:3000';  
   
@@ -14,7 +22,8 @@ export class AuthService {
   
   constructor(private http: HttpClient) { }
 
-  
+
+
   login(email: string, password: string): Observable<any> {
     const payload = { email, password };
     return this.http.post(`${this.apiUrl}/login`, payload).pipe(
@@ -52,9 +61,11 @@ export class AuthService {
 
 
 
-  getUserDetails(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/usuarios/informacion`);
+
+  getUserDetails(): Observable<UserInfo> {
+    return this.http.get<UserInfo>(`${this.apiUrl}/api/userinfo`);
   }
+
 
   logout(): void {
     this.isAuthenticatedSubject.next(false);

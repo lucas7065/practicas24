@@ -19,21 +19,16 @@ export class vistaJuegoComponent {
   juegosRecomendados: any;
 
   async ngOnInit(){
-
-    this.route.params.subscribe(
-      (params: any) => {
+    try {
+      this.route.params.subscribe(async (params: any) => {
         if(params.id)
         {
           this.id = params.id;
-        }
+          this.juego = await this.api.descripcionJuego(this.id);
+          this.juegosRecomendados = await this.api.filtrarGenero(this.juego.genre.toLocaleLowerCase());
+          this.juegosRecomendados = this.juegosRecomendados.filter((recomendado: any) => recomendado.title != this.juego.title).slice(0,5);
     }
-    );
-
-    try {
-      const data = await this.api.descripcionJuego(this.id);
-      this.juego = data;
-      this.juegosRecomendados = await this.api.filtrarGenero(this.juego.genre.toLocaleLowerCase());
-      this.juegosRecomendados = this.juegosRecomendados.filter((recomendado: any) => recomendado.title != this.juego.title).slice(0,5);
+  });
     } catch (error) {
       console.log("Ocurrio un error", error);
 }

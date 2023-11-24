@@ -1,4 +1,4 @@
-<div class="login">
+<div class="login" id="login">
   <form method="post" (ngSubmit)="onSubmit()" #loginForm="ngForm" class="custom-form">
     <h1>Login</h1>
     <input
@@ -15,8 +15,23 @@
       placeholder="Password"
       required="required"
     />
+    <div id="error-container" class="error-container">
+      <p id="error-message" class="error-message"></p>
+    </div>
     <button type="submit" [disabled]="!loginForm.form.valid">Ingresar</button>
   </form>
 </div>
+
+<div class="perfil-usuario-container" id="perfil-usuario-container">
+  <h2>Perfil de Usuario</h2>
+  <p>Bienvenido! {{ usuario.email }}</p>
+
+  <div class="botones">
+    <button routerLink="/filterp/all">Explorar juegos</button>
+    <button routerLink="/miperfil">Ver mi perfil</button>
+  </div>
+
+</div>
+
 
 

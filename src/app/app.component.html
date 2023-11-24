@@ -27,6 +27,7 @@
       <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
         <i class="fa fa-caret-down"></i>
       </button>
+   
       <mat-menu #order="matMenu" class="dropdown-content">
          <button mat-menu-item routerLink="/filter">Advanced filter</button>
          <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
@@ -37,8 +38,10 @@
          <i class="fa fa-caret-down"></i>
       </button>
       <mat-menu #profile="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/miperfil">Mi Perfil</button> 
          <button mat-menu-item routerLink="/login">Iniciar Sesion</button>
          <button mat-menu-item routerLink="/register">Registrarse</button> 
+
       </mat-menu>
    </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -9,7 +10,8 @@ import { AuthService } from '../../auth.service';
 export class PerfilUsuarioComponent implements OnInit {
   usuario = {
     email: "",
-    password: ""
+    password: "",
+    favoritos: []
   };
 
   constructor(private authService: AuthService) { }
@@ -20,15 +22,22 @@ export class PerfilUsuarioComponent implements OnInit {
   }
 
   obtenerInformacionUsuario(): void {
-    // Aquí asumimos que AuthService tiene un método para obtener la información del usuario
-    // Ajusta esto según la implementación real de tu AuthService
+    // Llamada al método getUserDetails() del servicio AuthService
     this.authService.getUserDetails().subscribe(
       (data: any) => {
-        // Actualiza el objeto usuario con la información obtenida
+        // En caso de éxito, actualiza el objeto usuario con la información obtenida
         this.usuario = data;
+        console.log("Información del usuario obtenida con éxito:", this.usuario);
       },
       error => {
+        // En caso de error, imprime un mensaje detallado en la consola
         console.error('Error al obtener información del usuario', error);
+  
+        // Si el error es una instancia de HttpErrorResponse, imprime más detalles
+        if (error instanceof HttpErrorResponse) {
+          console.error('Status:', error.status);
+          console.error('Mensaje de error:', error.error);
+        }
       }
     );
   }
