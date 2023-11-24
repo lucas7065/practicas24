@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
-import axios from "axios";
-import { UsersService } from "src/app/users/users.service";
+import { Component } from '@angular/core';
+import axios from 'axios';
+import { UsersService } from 'src/app/users/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login",
@@ -9,28 +10,33 @@ import { UsersService } from "src/app/users/users.service";
 })
 
 export class LoginComponent {
-  email = '';
-  password = '';
+    usuario = {
+    email: "",
+    password: ""
+  };
 
-  constructor(public userService: UsersService){}
+
+
+  constructor(public userService: UsersService, private router:Router){}
 
 
   onSubmit(): void {
-    console.log('Formulario enviado:', this.email, this.password);
+    console.log('Formulario enviado:', this.usuario);
 
-    const usuario = {
-      email: this.email,
-      password: this.password
-    };
-
-    axios.post('http://localhost:3000/login', usuario)
+    axios.post('http://localhost:3000/api/login', this.usuario)
       .then(response => {
         console.log('Respuesta del servidor:', response.data);
         
-        if(response.data.message){
-          console.log("Inicio de sesion exitoso");
-        }else{
-          console.log("Inicio de sesion fallido: ", response.data.error);
+        if (response.status === 200) {
+          console.log('Respuesta del servidor:', response.data);
+          
+          // Agregar la información al local storage
+          localStorage.setItem('miDatos', JSON.stringify(response.data));
+          console.log("LOGGED");
+          this.router.navigate(["/miperfil"]);
+        } else {
+          console.error('Error en la respuesta del servidor. Código de estado:', response.status);
+          throw new Error('Error en la respuesta del servidor.');
         }
       })
       .catch(error => {
@@ -38,10 +44,4 @@ export class LoginComponent {
       
       });
   }
-  
-  login(){
-    console.log(this.email);
-    console.log(this.password)
-  }
-  
 }

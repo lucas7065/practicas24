@@ -1,7 +1,11 @@
+// register.component.ts
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import axios from 'axios';
-import { UsersService } from 'src/app/users/users.service';
+import { UsersService } from '../../';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +23,7 @@ export class RegisterComponent {
     password: ''
 }
 
-constructor(public userService: UsersService){}
+constructor(private authService: AuthService ,public userService: UsersService, private router:Router){}
 
 
 onSubmit():void {
@@ -41,13 +45,14 @@ onSubmit():void {
 
 register() {
   const user = {nombre: this.usuario.nombre, apellido: this.usuario.apellido ,email: this.usuario.email, password: this.usuario.password};
-  if(!user.apellido || !user.nombre || !user.email){
-
+  if(user.email!=null && user.password!= null && user.nombre!= null && user.apellido!=null){
+    this.userService.register(user).subscribe((data)=>{
+    console.log(data);
+    })  
+    this.router.navigate(["/miperfil"]);
+  }else{
+    console.log("Debe completar todos los campos!");
   }
-  
-  
-  this.userService.register(user).subscribe((data)=>{
-  })  
 }
 
 }
