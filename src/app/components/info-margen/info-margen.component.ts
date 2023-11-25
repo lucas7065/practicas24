@@ -11,6 +11,7 @@ export class InfoMargenComponent {
   @Input() titulo: string = " ";
   @Input() miniatura: string = " ";
   @Input() url: string = " ";
+  @Input() distribuidor: string = " ";
 
   ngOnInit(){
   }
