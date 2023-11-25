@@ -31,7 +31,7 @@ export class vistaJuegoComponent {
   });
     } catch (error) {
       console.log("Ocurrio un error", error);
+    }
+  }
 }
-  }
-  }
 

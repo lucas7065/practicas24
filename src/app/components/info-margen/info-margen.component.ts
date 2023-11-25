@@ -12,6 +12,7 @@ export class InfoMargenComponent {
   @Input() miniatura: string = " ";
   @Input() url: string = " ";
   @Input() id: number = 0;
+  @Input() distribuidor: string = " ";
 
   ngOnInit(){
   }
