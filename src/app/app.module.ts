@@ -23,6 +23,7 @@ import { MiniaturaFavoritosComponent } from './components/miniatura-favoritos/mi
 import { VistaFavoritosComponent } from './components/vista-favoritos/vista-favoritos.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { VistaFiltroPersonalizadoComponent } from './components/vista-filtro-personalizado/vista-filtro-personalizado.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { VistaFiltroPersonalizadoComponent } from './components/vista-filtro-per
     VistaFavoritosComponent,
     PerfilUsuarioComponent,
     VistaFiltroPersonalizadoComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

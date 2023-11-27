@@ -1,0 +1,72 @@
+<!-- navbar.component.html -->
+<div *ngIf="isLoggedIn; else loggedOutNavbar">
+    <!-- Elementos para sesión iniciada -->
+    <div>
+      Bienvenido, Usuario
+      <button (click)="logout()">Cerrar sesión</button>
+    </div>
+  </div>
+  <ng-template #loggedOutNavbar>
+    <!-- Elementos para sesión no iniciada -->
+    <div>
+      <button routerLink="/">Inicio</button>
+      <button routerLink="/login">Iniciar sesión</button>
+    </div>
+  </ng-template>
+
+
+  <!--
+
+                YO LO SIGO A LA NOCHE, YA ESTAN HECHAS LAS FUNCIONES PARA MOSTRAR UNO U OTRO, HAY QUE SEPARARLOS NADA MAS
+                Y AGREGAR LAS RUTAS BIEN
+
+  <div class="navbar">
+   <a routerLink=""><img src="../assets/logoZoom.png" alt="logo"></a>
+   <div class="barraBusqueda">
+      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input" >
+      <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Search</button>
+   </div>
+   
+    <div class="dropdown">
+       <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
+         <i class="fa fa-caret-down"></i>
+       </button>
+       <mat-menu #genre="matMenu" class="dropdown-content" >
+         <button mat-menu-item routerLink="/filter">Advanced filter</button>
+         <button mat-menu-item *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</button>
+       </mat-menu>
+    </div> 
+    <div class="dropdown">
+       <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
+         <i class="fa fa-caret-down"></i>
+       </button>
+       <mat-menu #platform="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/filter">Advanced filter</button>
+         <button mat-menu-item *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</button>
+       </mat-menu>
+    </div> 
+    <div class="dropdown">
+      <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
+        <i class="fa fa-caret-down"></i>
+      </button>
+   
+      <mat-menu #order="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/filter">Advanced filter</button>
+         <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
+      </mat-menu>
+   </div>
+   <div class="dropdown">
+      <button mat-flat-button [matMenuTriggerFor]="profile" class="dropbtn">Perfil
+         <i class="fa fa-caret-down"></i>
+      </button>
+      <mat-menu #profile="matMenu" class="dropdown-content">
+         <button mat-menu-item routerLink="/miperfil">Mi Perfil</button> 
+         <button mat-menu-item routerLink="/login">Iniciar Sesion</button>
+         <button mat-menu-item routerLink="/register">Registrarse</button> 
+
+      </mat-menu>
+   </div>
+</div>
+<router-outlet></router-outlet>
+
+  -->

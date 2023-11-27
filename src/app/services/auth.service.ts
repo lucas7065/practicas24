@@ -25,6 +25,7 @@ export class AuthService {
     );
   }
 
+
   getUserDetails(): Observable<any> {
     return this.userDetailsSubject.asObservable();
   }
@@ -37,4 +38,6 @@ export class AuthService {
   isAuthenticated(): Observable<boolean> {
     return this.isAuthenticatedSubject.asObservable();
   }
+
+  
 }

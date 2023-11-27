@@ -19,10 +19,22 @@ export class AuthService {
   
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private userDetailsSubject = new BehaviorSubject<any>(null);
+  private loggedInStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
   
   constructor(private http: HttpClient) { }
 
 
+
+
+  // Método público para obtener el observable
+  get loggedInStatus$(): Observable<boolean> {
+    return this.loggedInStatus.asObservable();
+  }
+
+  // Método para verificar si hay una sesión iniciada
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('idUsuario');
+  }
 
   login(email: string, password: string): Observable<any> {
     const payload = { email, password };

@@ -22,8 +22,6 @@ export class LoginComponent {
 
 
   onSubmit(): void {
-    console.log('Formulario enviado:', this.usuario);
-  
     axios.post('http://localhost:3000/api/login', this.usuario)
       .then(response => {
         console.log('Respuesta del servidor:', response.data);
@@ -32,11 +30,19 @@ export class LoginComponent {
           console.log('Respuesta del servidor:', response.data);
   
           // Agregar la información al local storage
-          localStorage.setItem('miDatos', JSON.stringify(response.data));
+          localStorage.setItem('idUsuario', response.data.idUsuario);
+          localStorage.setItem('email', response.data.email);
+          localStorage.setItem('nombre', response.data.nombre);
+          localStorage.setItem('apellido', response.data.apellido);
           console.log("LOGGED");
-          document.getElementById("login")?.setAttribute("hidden", "true");
-          let container = document.getElementById("perfil-usuario-container") as HTMLAnchorElement;
-          container.style.display = "flex";
+
+          if(localStorage){
+            document.getElementById("login")?.setAttribute("hidden", "true");
+            let container = document.getElementById("perfil-usuario-container") as HTMLAnchorElement;
+            container.style.display = "flex";
+          }
+
+          
         } else {
           // Si las credenciales son inválidas, mostrar un alert
           alert('Credenciales inválidas. Por favor, verifica tu correo y contraseña.');
