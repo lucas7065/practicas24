@@ -16,10 +16,13 @@
     <div class="imagenes">
         <img *ngFor="let img of juego.screenshots" src="{{img.image}}" alt="{{juego.title}}">
     </div>  
+
+
     <h4>Related games...</h4>
     <div class="recomendados" *ngFor="let recomendado of juegosRecomendados">
         <app-miniatura imagen="{{recomendado.thumbnail}}"
         titulo="{{recomendado.title}}"
         [id]="recomendado.id"></app-miniatura>
     </div>
+
 </div>

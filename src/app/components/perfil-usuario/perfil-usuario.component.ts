@@ -8,39 +8,37 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./perfil-usuario.component.css']
 })
 export class PerfilUsuarioComponent implements OnInit {
-  usuario = {
-    email: "",
-    password: "",
-    favoritos: []
-  };
+  email: any = "";
+  nombre: any = "";
+  idUsuario: any = "";
+  password: any = "";
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     // Llama a un método en el AuthService para obtener la información del usuario
-    this.obtenerInformacionUsuario();
+    this.idUsuario = localStorage.getItem('idUsuario')?? "";
+    this.nombre = localStorage.getItem('nombre');
+    this.obtenerUsuario();
   }
 
-  obtenerInformacionUsuario(): void {
-    // Llamada al método getUserDetails() del servicio AuthService
-    this.authService.getUserDetails().subscribe(
-      (data: any) => {
-        // En caso de éxito, actualiza el objeto usuario con la información obtenida
-        this.usuario = data;
-        console.log("Información del usuario obtenida con éxito:", this.usuario);
+
+
+  obtenerUsuario(){
+    let usuarioNuevo: any;
+    this.authService.getUserDetails(this.idUsuario).subscribe(
+      async (resultado)=>{
+        console.log(resultado);
+        usuarioNuevo = resultado;
       },
-      error => {
-        // En caso de error, imprime un mensaje detallado en la consola
-        console.error('Error al obtener información del usuario', error);
-  
-        // Si el error es una instancia de HttpErrorResponse, imprime más detalles
-        if (error instanceof HttpErrorResponse) {
-          console.error('Status:', error.status);
-          console.error('Mensaje de error:', error.error);
-        }
+      (error)=>{
+        console.error('Error al obtener informacion del usuario:', error);
       }
-    );
-  }
+    )
+    this.nombre = usuarioNuevo.nombre;
+    this.email = usuarioNuevo.email;
+    this.idUsuario = usuarioNuevo.idUsuario;
+  };
 
   confirmarCerrarSesion(): void {
     if (confirm('¿Estás seguro de que deseas cerrar la sesión?')) {

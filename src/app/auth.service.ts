@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 interface UserInfo {
   email: string,
-  password: number
+  password: number,
+  nombre: string,
+  idUsuario: string
 }
 
 @Injectable({
@@ -72,40 +74,44 @@ export class AuthService {
 
 
 
+  obtenerJuegosFavoritos(idUsuario: string): Observable<number[]> {
+    const url = `${this.apiUrl}/juegos-favoritos`;
+
+    // Configurar los parámetros de la solicitud
+    const params = new HttpParams().set('idUsuario', idUsuario);
+
+    // Realizar la solicitud HTTP con los parámetros
+    return this.http.get<number[]>(url, { params }).pipe(
+      catchError(this.handleHttpError)
+    );
+  }
 
 
-  getUserDetails(): Observable<UserInfo> {
-    return this.http.get<UserInfo>(`${this.apiUrl}/api/userinfo`);
+
+
+  getUserDetails(idUsuario: string): Observable<UserInfo> {
+    const url = `${this.apiUrl}/api/info-usuario`;
+    
+    const params = new HttpParams().set('idUsuario', idUsuario);
+
+    return this.http.get<UserInfo>(url, { params }).pipe(
+      catchError(this.handleHttpError)
+    );
   }
 
 
   logout(): void {
     this.isAuthenticatedSubject.next(false);
     this.userDetailsSubject.next(null);
+    localStorage.clear();
   }
 
   isAuthenticated(): Observable<boolean> {
     return this.isAuthenticatedSubject.asObservable();
   }
-}
-  
-/*
-  login(username:string, password:string): Observable<any>{
-    const credentials = {username, password};
 
-    return this.http.post<any>('${this.apiUrl}/login', credentials).pipe(
-      tap((response)=>{
-        localStorage.setItem('token', response.token);
-      }),
-      catchError(this.handleError<any>('login'))
-    );
+  private handleHttpError(error: HttpErrorResponse): Observable<never> {
+    console.error('Error en la solicitud HTTP:', error);
+    return throwError('Error al procesar la solicitud al servidor');
   }
-
-  private handleError<T>(operation = 'operation', result?:T{
-    return (error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
-    }
-  })
 }
-*/

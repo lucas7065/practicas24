@@ -1,3 +1,4 @@
+
 <div class="navbar">
    <a routerLink=""><img src="../assets/logoZoom.png" alt="logo"></a>
    <div class="barraBusqueda">
@@ -33,17 +34,7 @@
          <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
       </mat-menu>
    </div>
-   <div class="dropdown">
-      <button mat-flat-button [matMenuTriggerFor]="profile" class="dropbtn">Perfil
-         <i class="fa fa-caret-down"></i>
-      </button>
-      <mat-menu #profile="matMenu" class="dropdown-content">
-         <button mat-menu-item routerLink="/miperfil">Mi Perfil</button> 
-         <button mat-menu-item routerLink="/login">Iniciar Sesion</button>
-         <button mat-menu-item routerLink="/register">Registrarse</button> 
-
-      </mat-menu>
-   </div>
+   <app-btn-profile></app-btn-profile>
 </div>
-<router-outlet></router-outlet>
 
+<!--<router-outlet></router-outlet>-->

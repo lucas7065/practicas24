@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute, Route } from '@angular/router';
+import { FavoritosService } from 'src/app/favoritos.service';
 
 @Component({
   selector: 'app-vista-favoritos',
@@ -9,32 +10,43 @@ import { ActivatedRoute, Route } from '@angular/router';
 })
 export class VistaFavoritosComponent {
 
-  constructor(private api: ApiService, private route: ActivatedRoute){}
-
   juegos: any = " ";
-  listaId: Array<number> = [516,2,1,4];
+  listaId: Array<number> = [];
+  idUsuario: any = "";
+
+
+  constructor(private api: ApiService, private route: ActivatedRoute, private servicio: FavoritosService){}
+
+
 
   async ngOnInit(){
+    this.idUsuario = localStorage.getItem('idUsuario');
+    
+    console.log("funcion juegos api: ");
+
+    this.obtenerJuegosFavoritos();
+
+
+
     try {
-      this.juegos = await this.api.filtrarPlataforma('all');
+
+      
       let juegosAux: Array<any> = [];
-      console.log(this.listaId);
       if (this.listaId)
       {
+        this.juegos = await this.api.filtrarPlataforma('all');
         let i:number = 0;
         this.juegos.forEach((juego: any) => {
-          while(i < this.listaId.length)
-          {
-            if(juego.id == this.listaId[i])
+          this.listaId.forEach((juegoFavorito: any)=>{
+            if(juego.id == juegoFavorito.idJuego)
             {
               juegosAux.push(juego);
               console.log(juego);
             }
-            i++;
-          }
-          i = 0;
+          })
         });
         this.juegos = juegosAux;
+        console.log(this.juegos);
       }
       else
       {
@@ -46,12 +58,43 @@ export class VistaFavoritosComponent {
     }
   }
 
+
+  obtenerJuegosFavoritos(){
+    this.servicio.obtenerJuegosFavoritos(this.idUsuario).subscribe(
+      (resultado)=>{
+        this.listaId = resultado;
+        console.log('Juegos favoritos:', this.listaId);
+      },
+      (error)=>{
+        console.error('Error al obtener juegos favoritos:', error);
+      }
+    );
+  };
+
+
   eliminarJuego(id: number){
+    this.idUsuario = localStorage.getItem('idUsuario');
+    console.log(id);
+    console.log(this.idUsuario);
     this.listaId = this.listaId.filter(idBorrar => idBorrar != id);
+    this.servicio.eliminarJuegoFavorito(this.idUsuario, id).subscribe(
+      response => {
+        console.log('Respuesta del servidor:', response);
+      },
+      error => {
+        console.error('Error al enviar IDs al servidor:', error);
+        // Muestra el mensaje de error específico en la consola
+        console.error('Mensaje de error del servidor:', error.message);
+        // Puedes manejar los errores aquí
+      }
+    );
+    
     this.ngOnInit();
   }
 
   ngOnDestroy(){
-    //Aca se actualizaria la lista de ids de la bdd
+    console.log(this.listaId);
+
+
   }
 }

@@ -1,0 +1,25 @@
+<div *ngIf="listaComentarios.length == 0; else puntaje">
+    No reviews yet.
+</div>
+<ng-template #puntaje>
+    <div>
+        <span>{{puntajePromedio}} out of 5 ({{listaComentarios.length}})</span>
+        <h1>Users review</h1>
+    </div>
+    <div *ngFor="let comentario of listaComentarios" class="comentarios">
+        <span>{{comentario.autor}}                {{comentario.fechaPublicacion}}</span>
+        <p>{{comentario.puntaje}}/5</p>
+    </div>
+</ng-template>
+<form action="">
+    <div class="dropdown">
+        <button mat-flat-button [mat-menu-trigger-for]="puntajeReview" class="dropbtn">Rating: {{this.comentario.puntaje}} 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <mat-menu #puntajeReview="matMenu" class="dropdown-content">
+           <button mat-menu-item *ngFor="let puntaje of listaPuntajes" (click)="actualizarPuntaje(puntaje)">{{puntaje}}</button>
+        </mat-menu>
+     </div> 
+    <!--<textarea placeholder="Write a review for the game" autocomplete="off" [(ngModel)]="mensajeActual" id="review-input" required></textarea>-->
+    <button type="submit" value="Submit Review" (click)="publicarComentario()">Send review</button>
+</form>

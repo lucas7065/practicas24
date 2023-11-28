@@ -20,6 +20,10 @@ export class LoginComponent {
 
   constructor(public userService: UsersService, private router:Router){}
 
+  ngOnInit(){
+    
+  }
+
 
   onSubmit(): void {
     axios.post('http://localhost:3000/api/login', this.usuario)
@@ -52,6 +56,7 @@ export class LoginComponent {
       .catch(error => {
         console.error('Error al hacer la llamada:', error);
       });
+
   }
 
 }
