@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import axios from 'axios';
 import { UsersService } from '../../users/users.service';
-import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 
 
@@ -23,7 +22,7 @@ export class RegisterComponent {
     password: ''
 }
 
-constructor(private authService: AuthService ,public userService: UsersService, private router:Router){}
+constructor(public userService: UsersService, private router:Router){}
 
 
 onSubmit():void {

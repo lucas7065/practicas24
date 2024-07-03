@@ -10,6 +10,8 @@ import { MiniaturaFavoritosComponent } from './components/miniatura-favoritos/mi
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { VistaFiltroPersonalizadoComponent } from './components/vista-filtro-personalizado/vista-filtro-personalizado.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PrivateComponent } from './components/private/private.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -25,9 +27,10 @@ const routes: Routes = [
   {path: 'search/:busqueda', component: VistaFiltroComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'mygames', component: VistaFavoritosComponent},
-  {path: 'miperfil', component: PerfilUsuarioComponent},
+  {path: 'mygames', component: VistaFavoritosComponent, canActivate: [AuthGuard]},
+  {path: 'miperfil', component: PerfilUsuarioComponent, canActivate: [AuthGuard]},
   {path: 'filter', component: VistaFiltroPersonalizadoComponent},
+  {path: 'private', component:PrivateComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 

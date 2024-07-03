@@ -1,40 +1,116 @@
-
+ <!-- 
 <div class="navbar">
-   <a routerLink=""><img src="../assets/logoZoom.png" alt="logo"></a>
+   <a routerLink="home"><img src="../assets/logoZoom.png" alt="logo"></a>
+   
    <div class="barraBusqueda">
       <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input" >
       <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Search</button>
    </div>
    
-    <div class="dropdown">
-       <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
-         <i class="fa fa-caret-down"></i>
-       </button>
-       <mat-menu #genre="matMenu" class="dropdown-content" >
-         <button mat-menu-item routerLink="/filter">Advanced filter</button>
-         <button mat-menu-item *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</button>
-       </mat-menu>
-    </div> 
-    <div class="dropdown">
-       <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
-         <i class="fa fa-caret-down"></i>
-       </button>
-       <mat-menu #platform="matMenu" class="dropdown-content">
-         <button mat-menu-item routerLink="/filter">Advanced filter</button>
-         <button mat-menu-item *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</button>
-       </mat-menu>
-    </div> 
-    <div class="dropdown">
-      <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
+
+  <div class="dropdown">
+    <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <mat-menu #genre="matMenu" class="dropdown-content" >
+      <button mat-menu-item routerLink="/filter">Advanced filter</button>
+      <button mat-menu-item *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</button>
+    </mat-menu>
+  </div> 
+
+
+  <div class="dropdown">
+      <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
         <i class="fa fa-caret-down"></i>
       </button>
-   
-      <mat-menu #order="matMenu" class="dropdown-content">
-         <button mat-menu-item routerLink="/filter">Advanced filter</button>
-         <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
+      <mat-menu #platform="matMenu" class="dropdown-content">
+        <button mat-menu-item routerLink="/filter">Advanced filter</button>
+        <button mat-menu-item *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</button>
       </mat-menu>
-   </div>
-   <app-btn-profile></app-btn-profile>
+  </div> 
+
+
+  <div class="dropdown">
+    <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <mat-menu #order="matMenu" class="dropdown-content">
+      <button mat-menu-item routerLink="/filter">Advanced filter</button>
+      <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
+    </mat-menu>
+  </div>
+
+
+  <div class="dropdown">
+    <app-btn-profile></app-btn-profile>
+  </div>
+
+  <router-outlet></router-outlet>
+
 </div>
 
-<!--<router-outlet></router-outlet>-->
+/// ---------------
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">Auth</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
+        <app-btn-profile></app-btn-profile>
+        <a class="nav-link" routerLink="private" routerLinkActive="active">Games</a>
+      </div>
+    </div>
+  </div>
+</nav>
+-->
+
+
+
+<div class="navbar">
+  <a routerLink="home"><img src="../assets/logoZoom.png" alt="logo"></a>
+
+  <div class="barraBusqueda">
+      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input">
+      <button mat-raised-button color="primary" [routerLink]="'/search/' + busqueda" id="bs">Search</button>
+  </div>
+
+  <div class="dropdown">
+      <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
+          <i class="fa fa-caret-down"></i>
+      </button>
+      <mat-menu #genre="matMenu" class="dropdown-content" >
+          <button mat-menu-item routerLink="/filter">Advanced filter</button>
+          <button mat-menu-item *ngFor='let genero of generos' [routerLink]="['/filterg', genero.toLowerCase()]">{{ genero.replace("-", " ") }}</button>
+      </mat-menu>
+  </div>
+
+  <div class="dropdown">
+      <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
+          <i class="fa fa-caret-down"></i>
+      </button>
+      <mat-menu #platform="matMenu" class="dropdown-content">
+          <button mat-menu-item routerLink="/filter">Advanced filter</button>
+          <button mat-menu-item *ngFor='let plataforma of plataformas' [routerLink]="['/filterp', plataforma.toLowerCase()]">{{ plataforma }}</button>
+      </mat-menu>
+  </div>
+
+  <div class="dropdown">
+      <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
+          <i class="fa fa-caret-down"></i>
+      </button>
+      <mat-menu #order="matMenu" class="dropdown-content">
+          <button mat-menu-item routerLink="/filter">Advanced filter</button>
+          <button mat-menu-item *ngFor='let sort of sorts' [routerLink]="['/filters', sort.toLowerCase()]">{{ sort.replace("-", " ") }}</button>
+      </mat-menu>
+  </div>
+
+  <app-btn-profile></app-btn-profile>
+</div>
+
+
+
+<router-outlet></router-outlet>

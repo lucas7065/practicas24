@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
-
+import { AuthUService } from './services/auth-u.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
 
-  constructor(private api: ApiService){}
+  constructor(private api: ApiService, private authUService: AuthUService){}
   title = 'tp-final-angular';
   generos: Array<string> = ['MMORPG', 'Shooter', 'Strategy', 'MOBA', 'Racing', 'Sports', 'Social', 'Sandbox', 'Open-world',
    'Survival', 'PVP', 'PVE', 'Pixel', 'Voxel', 'Zombie', 'Turn-based', 'First-person','Third-person', 'Top-down', 'Tank', 
@@ -23,6 +23,11 @@ export class AppComponent {
   buscar = document.getElementById("buscar") as HTMLAnchorElement;
   busqueda: string = "";
 
+  ngOnInit() {
+    
+  }
+
+}
 
   
-}
+

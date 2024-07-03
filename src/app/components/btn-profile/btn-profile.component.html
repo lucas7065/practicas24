@@ -1,22 +1,20 @@
-<div class="dropdown" *ngIf="isLoggedIn; else loggedOut">
-    <button mat-flat-button [matMenuTriggerFor]="profile" class="dropbtn">Perfil
-       <i class="fa fa-caret-down"></i>
+<!-- 
+<div class="dropdown">
+    <button>
+        <a class="nav-link dropbtn" *ngIf= "!isLoggedIn" routerLink="login" routerLinkActive="active">Login</a>
+        <a class="nav-link dropbtn" *ngIf="isLoggedIn" routerLink="miperfil" routerLinkActive="active">Perfil</a>
     </button>
-    <mat-menu #profile="matMenu" class="dropdown-content">
-       <button mat-menu-item routerLink="/miperfil">Mi Perfil</button> 
-       <button mat-menu-item routerLink="/mygames">Lista favoritos</button> 
-       <button mat-menu-item routerLink="/home" (click)="confirmarCerrarSesion()">Cerrar Sesion</button>
-    </mat-menu>
- </div>
+</div>
+
+-->
+
+<div class="dropdown btn-profile">
+    <a class="nav-link dropbtn" *ngIf="!isLoggedIn" routerLink="login" routerLinkActive="active">Login</a>
+    <a class="nav-link dropbtn" *ngIf="!isLoggedIn" routerLink="register" routerLinkActive="active">Register</a>        
+    <a class="nav-link dropbtn" *ngIf="isLoggedIn" routerLink="miperfil" routerLinkActive="active">Perfil</a>
+</div>
 
 
-<ng-template #loggedOut>
-    <button mat-flat-button [matMenuTriggerFor]="profile" class="dropbtn">Perfil
-        <i class="fa fa-caret-down"></i>
-    </button>
-        <mat-menu #profile="matMenu" class="dropdown-content">
-        <button mat-menu-item routerLink="/login" (click)="ngOnInit()">Iniciar Sesion</button>
-        <button mat-menu-item routerLink="/register">Registrarse</button> 
-        </mat-menu>
-</ng-template>
+
+
 

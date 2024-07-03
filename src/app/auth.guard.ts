@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import {Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from './services/auth.service';
+import { AuthUService } from './services/auth-u.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import { AuthService } from './services/auth.service';
 
 export class AuthGuard implements CanActivate {
 
+  /*
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -22,5 +23,20 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/login']);
       return false;
     }
+  }
+    */
+
+  constructor(private authUService: AuthUService, private router: Router) {
+
+  }
+
+  canActivate(): boolean{
+    if(!this.authUService.isAuth()){
+      console.log('Token no es valido o ya expiro.');
+      alert('Inicie sesion para acceder.');
+      this.router.navigate(['login']);
+      return false;
+    }
+    return true;
   }
 }

@@ -13,23 +13,29 @@ div a img{
     flex-grow: 1;
 }
 
-#barraBusqueda{
+.barraBusqueda {
     display: inline-block;
+    margin-left: 20px; /* Ajuste de margen para separar el campo de búsqueda del logo */
+}
+
+#bs{
+    margin-left: 15px;
 }
 
 #buscar{
     margin-bottom: 3px;
 }
 
+
 .navbar {
     background-color: #262526;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     color: white;
     padding: 20px;
     margin-bottom: 0;
-    height: 50px;
+    height: 100px;
 }
 
 .navbar a {
@@ -45,20 +51,26 @@ div a img{
 }
 
 .navbar .dropdown {
-    float: left;
     overflow: hidden;
 }
+
 .navbar .dropdown .dropbtn {
     cursor: pointer;
     font-size: 16px;  
     border: none;
     outline: none;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 8px;
     background-color: inherit;
     font-family: inherit;
     margin: 0;
 }
+
+.dropbtn{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
 .navbar .dropdown-content {
     display: none;
     position: absolute;
@@ -67,20 +79,13 @@ div a img{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.navbar .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
+
 .navbar .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
+
 .navbar .dropdown:hover .dropdown-content {
     display: block;
+    background-color: white;
 }
-
-
-

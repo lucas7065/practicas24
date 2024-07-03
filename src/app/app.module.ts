@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,9 @@ import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuar
 import { VistaFiltroPersonalizadoComponent } from './components/vista-filtro-personalizado/vista-filtro-personalizado.component';
 import { BtnProfileComponent } from './components/btn-profile/btn-profile.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { PrivateComponent } from './components/private/private.component';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 
 @NgModule({
@@ -46,6 +49,7 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
     VistaFiltroPersonalizadoComponent,
     BtnProfileComponent,
     ComentariosComponent,
+    PrivateComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,13 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    // jwt
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    JwtHelperService,
+    // token interceptor
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

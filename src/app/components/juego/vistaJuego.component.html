@@ -17,6 +17,7 @@
         <img *ngFor="let img of juego.screenshots" src="{{img.image}}" alt="{{juego.title}}">
     </div>  
 
+    <app-comentarios [id]="juego.id"></app-comentarios>
 
     <h4>Related games...</h4>
     <div class="recomendados" *ngFor="let recomendado of juegosRecomendados">

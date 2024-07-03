@@ -3,8 +3,9 @@
 </div>
 <ng-template #puntaje>
     <div>
-        <span>{{puntajePromedio}} out of 5 ({{listaComentarios.length}})</span>
         <h1>Users review</h1>
+
+        <span>{{puntajePromedio}} out of 5 ({{listaComentarios.length}})</span>
     </div>
     <div *ngFor="let comentario of listaComentarios" class="comentarios">
         <span>{{comentario.autor}}                {{comentario.fechaPublicacion}}</span>

@@ -1,6 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthUService } from 'src/app/services/auth-u.service';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -13,17 +14,18 @@ export class PerfilUsuarioComponent implements OnInit {
   idUsuario: any = "";
   password: any = "";
 
-  constructor(private authService: AuthService) { }
+  isLoggedIn: boolean = false;
+
+  constructor() { }
 
   ngOnInit(): void {
     // Llama a un método en el AuthService para obtener la información del usuario
-    this.idUsuario = localStorage.getItem('idUsuario')?? "";
-    this.nombre = localStorage.getItem('nombre');
-    this.obtenerUsuario();
-  }
+
+  };
 
 
 
+/*
   obtenerUsuario(){
     let usuarioNuevo: any;
     this.authService.getUserDetails(this.idUsuario).subscribe(
@@ -39,6 +41,7 @@ export class PerfilUsuarioComponent implements OnInit {
     this.email = usuarioNuevo.email;
     this.idUsuario = usuarioNuevo.idUsuario;
   };
+  */
 
   confirmarCerrarSesion(): void {
     if (confirm('¿Estás seguro de que deseas cerrar la sesión?')) {
@@ -52,4 +55,3 @@ export class PerfilUsuarioComponent implements OnInit {
   }
 }
 
- 

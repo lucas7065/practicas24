@@ -11,12 +11,12 @@ import { map } from 'rxjs/operators';
 })
 export class FavoritosService {
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://localhost:3000/user';
 
   constructor(private http: HttpClient) { }
 
   insertarJuegoFavorito(idUsuario: string, idJuego: number): Observable<any> {
-    const url = `${this.apiUrl}/insertar-juego-favorito`;
+    const url = `${this.apiUrl}/insert-game-2`;
     const body = { idUsuario: idUsuario, idJuego: idJuego };
 
     return this.http.post(url, body)
@@ -26,7 +26,7 @@ export class FavoritosService {
   }
 
   eliminarJuegoFavorito(idUsuario:string, idJuego: number): Observable<any>{
-    const url = `${this.apiUrl}/eliminar-juego-favorito`;
+    const url = `${this.apiUrl}/delete-game`;
     const body = { idUsuario: idUsuario, idJuego: idJuego };
 
     return this.http.post(url, body)
@@ -37,7 +37,7 @@ export class FavoritosService {
 
 
   obtenerJuegosFavoritos(idUsuario: string): Observable<number[]> {
-    const url = `${this.apiUrl}/juegos-favoritos`;
+    const url = `${this.apiUrl}/show-fav-games`;
 
     // Configurar los parámetros de la solicitud
     const params = new HttpParams().set('idUsuario', idUsuario);

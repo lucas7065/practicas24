@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="login" id="login">
   <form method="post" (ngSubmit)="onSubmit()" #loginForm="ngForm" class="custom-form">
     <h1>Login</h1>
@@ -31,6 +31,20 @@
     <button routerLink="/miperfil">Ver mi perfil</button>
   </div>
 
+</div>
+-->
+<div class="custom-form">
+  <h1>Inicio de Sesion</h1>
+  <div class="mb-3">
+    <input [(ngModel)]="user.email" type="email" class="form-control" id="email" placeholder="Email">
+  </div>
+  
+  
+  <div class="mb-3">
+    <input [(ngModel)]="user.password" type="password" class="form-control" id="pass" placeholder="Contraseña">
+  </div>
+  
+  <button class="btn btn-primary" (click)="logIn()">Login</button>
 </div>
 
 

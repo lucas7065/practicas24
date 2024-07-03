@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import axios from 'axios';
-import { UsersService } from 'src/app/users/users.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthUService } from 'src/app/services/auth-u.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-login",
@@ -9,20 +9,68 @@ import { Router } from '@angular/router';
   styleUrls: ["./login.component.css"],
 })
 
-export class LoginComponent {
-    usuario = {
-    email: "",
-    password: "",
-    nombre: ""
+export class LoginComponent implements OnInit{
+    user = {
+      idUsuario: '',
+      email: "",
+      password: "",
+      nombre: "",
+      apellido: ""
   };
 
 
+  constructor(private authUService: AuthUService, private router: Router){}
 
-  constructor(public userService: UsersService, private router:Router){}
 
-  ngOnInit(){
-    
+  ngOnInit(){}
+
+  logIn(){
+    this.authUService.login(this.user).subscribe( (res:any)  =>{
+      if(res.token && res.idUsuario){
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('idUsuario', res.idUsuario);
+        localStorage.setItem('token', res.token); 
+        this.authUService.setAuthStatus(true);
+        this.router.navigate(['miperfil']);
+      } else{
+        console.error('Credenciales inválidas. Código de estado:', res.status);
+      }
+
+      
+    }, error =>{
+      Swal.fire({
+        title:"Credenciales invalidas",
+        text: "Email o contraseña incorrectos.",
+        icon: "error"
+      });
+      console.error('Login error: ', error);
+    });
   }
+
+
+  logOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('idUsuario');
+    this.authUService.setAuthStatus(false);
+  }
+
+  isAuth(){
+    this.authUService.isAuth();
+  }
+
+
+/*
+  onLogin(){
+    this.authService.login(this.usuario.email, this.usuario.password).subscribe(reponse =>{
+      if (reponse.success){
+        this.router.navigate(['/']);
+      } else {
+        // manejar error de auth
+      }
+    });
+  }
+
+
 
 
   onSubmit(): void {
@@ -59,5 +107,9 @@ export class LoginComponent {
 
   }
 
-}
+*/
 
+
+  
+
+}
