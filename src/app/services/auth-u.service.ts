@@ -14,6 +14,10 @@ export class AuthUService {
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
+  register(user: any){
+    return this.http.post(`${this.url}/register`, user);
+  }
+
   login(user:any){
     return this.http.post(`${this.url}/login`, user);
   }
@@ -51,9 +55,8 @@ export class AuthUService {
     return this.http.get(url, { params: { idJuego: idJuego.toString() } });
   }
   
-  getUsername(idUsuario: number): Observable<any>{
+  getUsername(idUsuario: string): Observable<any>{
     const params = new HttpParams().set('idUsuario', idUsuario);
-    return this.http.get(`${this.url}/get-username`, { params });
-    
+    return this.http.get(`${this.url}/get-username`, { params });    
   }
 }

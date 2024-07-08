@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute, Route } from '@angular/router';
 import { FavoritosService } from 'src/app/favoritos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vista-favoritos',
@@ -80,12 +81,20 @@ export class VistaFavoritosComponent {
     this.servicio.eliminarJuegoFavorito(this.idUsuario, id).subscribe(
       response => {
         console.log('Respuesta del servidor:', response);
+        Swal.fire({
+          icon: 'success',
+          text: 'Juego eliminado de favoritos correctamente'
+        })
+        this.ngOnInit();
       },
       error => {
         console.error('Error al enviar IDs al servidor:', error);
-        // Muestra el mensaje de error específico en la consola
         console.error('Mensaje de error del servidor:', error.message);
-        // Puedes manejar los errores aquí
+        Swal.fire({
+          icon: 'error',
+          text: 'Error al eliminar juego de favoritos.'
+        });
+        this.ngOnInit();
       }
     );
     

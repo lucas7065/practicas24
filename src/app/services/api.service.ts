@@ -84,6 +84,5 @@ ordenarPersonalizado (genero: string, plataforma: string, sort: string)
             return this.filtrarGenero(genero);
         }
     }
-    //return this.obtenerDatos (`https://www.freetogame.com/api/filter?tag=${filtro}&platform=${plataforma}&sort-by=${sort}`);
 }
 }

@@ -16,11 +16,28 @@ export class PerfilUsuarioComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private servicio: AuthUService) { }
 
   ngOnInit(): void {
-    // Llama a un método en el AuthService para obtener la información del usuario
+    const idUsuario = localStorage.getItem('idUsuario');
 
+    if(idUsuario){
+      this.servicio.getUsername(idUsuario).subscribe(
+        data =>{
+          if(data.nombre){
+            this.nombre = data.nombre;
+            console.log('Nombre del usuario:', this.nombre);
+          }else{
+            console.error(data);
+          }
+        },
+        error =>{
+          console.error('Error:', error);
+        }
+      );
+    }else{
+      console.error('idUsuario no encontrado en el localStorage.');
+    }
   };
 
 

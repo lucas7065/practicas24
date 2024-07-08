@@ -17,9 +17,9 @@ export class HomePageComponent {
   async ngOnInit(){
     try {
       this.juegosPopulares = await this.api.ordenarJuegos("popularity");
-      this.juegosPopulares = this.juegosPopulares.slice(0,10);
+      this.juegosPopulares = this.juegosPopulares.slice(0,12);
       this.juegosRecienAnadidos = await this.api.ordenarJuegos("release-date");
-      this.juegosRecienAnadidos = this.juegosRecienAnadidos.slice(0,10);
+      this.juegosRecienAnadidos = this.juegosRecienAnadidos.slice(0,12);
     } catch (error) {
       
     }

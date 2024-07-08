@@ -26,7 +26,7 @@ export class vistaJuegoComponent {
           this.id = params.id;
           this.juego = await this.api.descripcionJuego(this.id);
           this.juegosRecomendados = await this.api.filtrarGenero(this.juego.genre.toLocaleLowerCase());
-          this.juegosRecomendados = this.juegosRecomendados.filter((recomendado: any) => recomendado.title != this.juego.title).slice(0,5);
+          this.juegosRecomendados = this.juegosRecomendados.filter((recomendado: any) => recomendado.title != this.juego.title).slice(0,4);
     }
   });
     } catch (error) {

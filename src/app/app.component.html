@@ -1,116 +1,83 @@
- <!-- 
-<div class="navbar">
-   <a routerLink="home"><img src="../assets/logoZoom.png" alt="logo"></a>
-   
-   <div class="barraBusqueda">
-      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input" >
-      <button id="buscar" mat-raised-button color="primary" routerLink="/search/{{busqueda}}">Search</button>
-   </div>
-   
+<mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+    <a routerLink="home"><img src="../assets/logoZoom.png" alt="logo" class="logo"></a>
+</mat-toolbar>
 
-  <div class="dropdown">
-    <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <mat-menu #genre="matMenu" class="dropdown-content" >
-      <button mat-menu-item routerLink="/filter">Advanced filter</button>
-      <button mat-menu-item *ngFor='let genero of generos' routerLink='/filterg/{{genero.toLocaleLowerCase()}}'>{{genero.replace("-", " ")}}</button>
-    </mat-menu>
-  </div> 
+<mat-sidenav-container autosize>
+  <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'"
+    [opened]="isMobile ? 'false' : 'true'">
+    <mat-nav-list>
 
-
-  <div class="dropdown">
-      <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <mat-menu #platform="matMenu" class="dropdown-content">
-        <button mat-menu-item routerLink="/filter">Advanced filter</button>
-        <button mat-menu-item *ngFor='let plataforma of plataformas' routerLink='/filterp/{{plataforma.toLowerCase()}}'>{{plataforma}}</button>
-      </mat-menu>
-  </div> 
-
-
-  <div class="dropdown">
-    <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <mat-menu #order="matMenu" class="dropdown-content">
-      <button mat-menu-item routerLink="/filter">Advanced filter</button>
-      <button mat-menu-item *ngFor='let sort of sorts' routerLink='/filters/{{sort.toLowerCase()}}'>{{sort.replace("-", " ")}}</button>
-    </mat-menu>
-  </div>
-
-
-  <div class="dropdown">
-    <app-btn-profile></app-btn-profile>
-  </div>
-
-  <router-outlet></router-outlet>
-
-</div>
-
-/// ---------------
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand">Auth</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
-        <app-btn-profile></app-btn-profile>
-        <a class="nav-link" routerLink="private" routerLinkActive="active">Games</a>
-      </div>
-    </div>
-  </div>
-</nav>
--->
-
-
-
-<div class="navbar">
-  <a routerLink="home"><img src="../assets/logoZoom.png" alt="logo"></a>
-
-  <div class="barraBusqueda">
-      <input placeholder="Search games" autocomplete="off" [(ngModel)]="busqueda" id="search-input">
-      <button mat-raised-button color="primary" [routerLink]="'/search/' + busqueda" id="bs">Search</button>
-  </div>
-
-  <div class="dropdown">
-      <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre 
+      <a mat-list-item routerLink="home">
+        <span class="entry">
+          <mat-icon>home</mat-icon>
+          <span *ngIf="!isCollapsed">Home</span>
+        </span>
+      </a>
+      <mat-list-item>
+        <button mat-flat-button [mat-menu-trigger-for]="genre" class="dropbtn">Genre
           <i class="fa fa-caret-down"></i>
-      </button>
-      <mat-menu #genre="matMenu" class="dropdown-content" >
+        </button>
+        <mat-menu #genre="matMenu" class="dropdown-content nav-link">
           <button mat-menu-item routerLink="/filter">Advanced filter</button>
-          <button mat-menu-item *ngFor='let genero of generos' [routerLink]="['/filterg', genero.toLowerCase()]">{{ genero.replace("-", " ") }}</button>
-      </mat-menu>
-  </div>
+          <button mat-menu-item *ngFor='let genero of generos' [routerLink]="['/filterg', genero.toLowerCase()]">{{
+            genero.replace("-", " ") }}</button>
+        </mat-menu>
+      </mat-list-item>
 
-  <div class="dropdown">
-      <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform 
+      <mat-list-item>
+        <button mat-flat-button [mat-menu-trigger-for]="platform" class="dropbtn">Platform
           <i class="fa fa-caret-down"></i>
-      </button>
-      <mat-menu #platform="matMenu" class="dropdown-content">
+        </button>
+        <mat-menu #platform="matMenu" class="dropdown-content">
           <button mat-menu-item routerLink="/filter">Advanced filter</button>
-          <button mat-menu-item *ngFor='let plataforma of plataformas' [routerLink]="['/filterp', plataforma.toLowerCase()]">{{ plataforma }}</button>
-      </mat-menu>
-  </div>
+          <button mat-menu-item *ngFor='let plataforma of plataformas'
+            [routerLink]="['/filterp', plataforma.toLowerCase()]">{{ plataforma }}</button>
+        </mat-menu>
+      </mat-list-item>
 
-  <div class="dropdown">
-      <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
+      <mat-list-item>
+        <button mat-flat-button [mat-menu-trigger-for]="order" class="dropbtn">Order by
           <i class="fa fa-caret-down"></i>
-      </button>
-      <mat-menu #order="matMenu" class="dropdown-content">
+        </button>
+        <mat-menu #order="matMenu" class="dropdown-content">
           <button mat-menu-item routerLink="/filter">Advanced filter</button>
-          <button mat-menu-item *ngFor='let sort of sorts' [routerLink]="['/filters', sort.toLowerCase()]">{{ sort.replace("-", " ") }}</button>
-      </mat-menu>
-  </div>
-
-  <app-btn-profile></app-btn-profile>
-</div>
+          <button mat-menu-item *ngFor='let sort of sorts' [routerLink]="['/filters', sort.toLowerCase()]">{{
+            sort.replace("-", " ") }}</button>
+        </mat-menu>
+      </mat-list-item>
 
 
 
-<router-outlet></router-outlet>
+
+      <a mat-list-item routerLink="login" *ngIf="!isLoggedIn">
+        <span class="entry">
+          <mat-icon>person</mat-icon>
+          <span *ngIf="!isCollapsed">Ingresar</span>
+
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="register" *ngIf="!isLoggedIn">
+        <span class="entry">
+          <mat-icon>person_add</mat-icon>
+          <span *ngIf="!isCollapsed">Registrarse</span>
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="miperfil" *ngIf="isLoggedIn">
+        <span class="entry">
+          <mat-icon>face</mat-icon>
+          <span *ngIf="!isCollapsed">Perfil</span>
+        </span>
+      </a>
+
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,20 +1,72 @@
-*{
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Encabezado */
+h2 {
+    color: #F9185F;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
-div{
-    padding-top: 10px;
+/* Contenedor de los juegos favoritos */
+.vistaFavoritos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 10px;
+    width: calc(50% - 40px);
+    /* Ajusta el ancho para dos columnas con márgenes */
+    box-sizing: border-box;
 }
 
-.vistaFavoritos{
-    display: inline-flex;
-    text-align: center;
-    padding: 1px;
-    cursor: pointer;   
+/* Contenedor general para las vistas */
+.vistaFavoritos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
 }
 
-#borrar{
-    margin-top: 50px;
+/* Botón para eliminar juego */
+#borrar {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+#borrar:hover {
+    background-color: #ff3333;
+}
 
+/* Estilos adicionales */
+button {
+    outline: none;
+}
+
+app-miniatura-favoritos {
+    flex-grow: 1;
+    margin-right: 10px;
+}

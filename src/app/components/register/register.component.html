@@ -1,11 +1,33 @@
-<div class="register">
-  <form class="custom-form" method="post" (ngSubmit)="onSubmit()" #registroForm="ngForm">
-    <h1>Registro de usuario</h1>
-    <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="usuario.nombre" required>
-    <input type="text" name="apellido" id="apellido" placeholder="Apellido" [(ngModel)]="usuario.apellido" required>
-    <input type="email" name="email" id="email" placeholder="Correo" [(ngModel)]="usuario.email" required>
-    <input type="password" name="password" id="password" placeholder="Contraseña" [(ngModel)]="usuario.password" required>
-    
-    <button type="submit" (click)="register()" [disabled]="!registroForm.form.valid">Registrarse</button>
-  </form>
-</div>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="custom-form">
+  <h1>Registro de usuario</h1>
+  <div>
+    <input id="noombre" formControlName="nombre" class="form-control" placeholder="Nombre">
+    <div *ngIf="registerForm.controls['nombre'].invalid && (registerForm.controls['nombre'].dirty || registerForm.controls['nombre'].touched)">
+      <small *ngIf="registerForm.controls['nombre'].errors?.['required']" class="alert">Nombre es requerido.</small>
+    </div>
+  </div>
+
+  <div>
+    <input id="apellido" formControlName="apellido" class="form-control" placeholder="Apellido">
+    <div *ngIf="registerForm.controls['apellido'].invalid && (registerForm.controls['apellido'].dirty || registerForm.controls['apellido'].touched)">
+      <small *ngIf="registerForm.controls['apellido'].errors?.['required']" class="alert">Apellido es requerido.</small>
+    </div>
+  </div>
+
+  <div>
+    <input id="email" formControlName="email" class="form-control" placeholder="Email">
+    <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+      <small *ngIf="registerForm.controls['email'].errors?.['required']" class="alert">Email es requerido.</small>
+      <small *ngIf="registerForm.controls['email'].errors?.['email']" class="alert">Email debe ser valido.</small>
+    </div>
+  </div>
+
+  <div>
+    <input id="password" type="password" formControlName="password" class="form-control" placeholder="Password">
+    <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+      <small *ngIf="registerForm.controls['password'].errors?.['required']" class="alert">Password es requerido.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">Registrarse</button>
+</form>

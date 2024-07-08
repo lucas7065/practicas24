@@ -1,6 +1,6 @@
-<div class="perfil-usuario-container">
+<div class="perfil-usuario-container" *ngIf="nombre">
     <h2>Mi Perfil</h2>
-    <p>¡Bienvenido!</p>
+    <p>¡Bienvenido {{nombre}}!</p>
   
     <div class="botones">
     <button routerLink="/mygames">Mis juegos</button>
@@ -8,4 +8,3 @@
     <button (click)="confirmarCerrarSesion()">Cerrar Sesión</button>
   </div>
   </div>
-  
